@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'model/EnergyType.dart';
+import '../model/EnergyType.dart';
 
 class EnergyPage extends StatelessWidget {
   final EnergyType energyType;
