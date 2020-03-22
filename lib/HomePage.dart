@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'EnergyPage.dart';
+import 'model/EnergyType.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -12,22 +15,26 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Column(children: <Widget>[
-                Row(mainAxisAlignment: MainAxisAlignment.center,
+              Column(
+                children: <Widget>[
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        EnergyButton('Wind', EnergyType.wind),
+                        EnergyButton('Solar', EnergyType.solar)
+                      ]),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      EnergyButton('Wind', EnergyType.wind),
-                      EnergyButton('Solar', EnergyType.solar)
-                    ]),
-                Row(mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    EnergyButton('Hydro', EnergyType.hydro),
-                    EnergyButton('Biomass', EnergyType.biomass)
-                  ],)
-              ],)
+                      EnergyButton('Hydro', EnergyType.hydro),
+                      EnergyButton('Biomass', EnergyType.biomass)
+                    ],
+                  )
+                ],
+              )
             ],
           ),
-        )
-    );
+        ));
   }
 }
 
@@ -49,10 +56,21 @@ class EnergyButton extends StatelessWidget {
             borderRadius: new BorderRadius.circular(10.0),
             side: BorderSide(color: Colors.black)),
         padding: EdgeInsets.all(5),
-        onPressed: () {},
+        onPressed: () {
+          _handleEnergyButtonClick(energyType, context);
+        },
       ),
     );
   }
-}
 
-enum EnergyType { wind, solar, hydro, biomass }
+  void _handleEnergyButtonClick(EnergyType energyType, BuildContext context) {
+    Navigator.push(
+        context,
+        PageTransition(
+            type: PageTransitionType.rightToLeft,
+            duration: Duration(milliseconds: 200),
+            child: EnergyPage(
+              energyType: energyType,
+            )));
+  }
+}
