@@ -1,40 +1,38 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:green_energy_app/model/EnergyType.dart';
 import 'package:page_transition/page_transition.dart';
-import 'EnergyPage.dart';
-import 'model/EnergyType.dart';
 
-class HomePage extends StatelessWidget {
+import 'EnergyPage.dart';
+
+class EnergyTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("Learn to be green"),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Column(
             children: <Widget>[
-              Column(
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    EnergyButton('Wind', EnergyType.wind),
+                    EnergyButton('Solar', EnergyType.solar)
+                  ]),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        EnergyButton('Wind', EnergyType.wind),
-                        EnergyButton('Solar', EnergyType.solar)
-                      ]),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      EnergyButton('Hydro', EnergyType.hydro),
-                      EnergyButton('Biomass', EnergyType.biomass)
-                    ],
-                  )
+                  EnergyButton('Hydro', EnergyType.hydro),
+                  EnergyButton('Biomass', EnergyType.biomass)
                 ],
               )
             ],
-          ),
-        ));
+          )
+        ],
+      ),
+    );
   }
 }
 
