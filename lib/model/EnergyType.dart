@@ -1,6 +1,6 @@
 enum EnergyType { wind, solar, hydro, biomass }
 
-String energyTypeToString(EnergyType energyType) {
+String getEnergyTypeString(EnergyType energyType) {
   switch (energyType) {
     case EnergyType.wind:
       return "Wind";

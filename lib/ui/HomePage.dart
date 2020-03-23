@@ -14,7 +14,6 @@ class HomePage extends StatelessWidget {
             padding: EdgeInsets.symmetric(vertical: 30.0),
             children: <Widget>[
               TriviaTile(),
-              SizedBox(height: 20.0,), // Creates space between tiles.
               EnergyTile()
             ],
           ),

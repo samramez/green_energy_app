@@ -10,7 +10,7 @@ class EnergyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(energyTypeToString(energyType)),
+        title: Text(getEnergyTypeString(energyType)),
         leading: BackButton(),
       ),
     );
